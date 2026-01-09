@@ -209,33 +209,31 @@ export default function LandingPage() {
 
 /* Preloader Component */
 function Preloader() {
+    const [progress, setProgress] = useState(0);
     const [step, setStep] = useState(0);
-    const [typedText, setTypedText] = useState("");
-    const fullText = "zuri.corp";
 
     useEffect(() => {
-        // Typewriter effect
-        let charIndex = 0;
-        const typeInterval = setInterval(() => {
-            if (charIndex < fullText.length) {
-                setTypedText(fullText.slice(0, charIndex + 1));
-                charIndex++;
-            } else {
-                clearInterval(typeInterval);
-            }
-        }, 150);
+        // Progress bar / Logo fill timing
+        const duration = 4000; // 4 seconds for the fill
+        const interval = 20;
+        const increment = (100 / (duration / interval));
 
-        // Step timings adjusted for 5 second loader
+        const timer = setInterval(() => {
+            setProgress(prev => {
+                const next = prev + increment;
+                return next >= 100 ? 100 : next;
+            });
+        }, interval);
+
+        // Animation steps
         const timers = [
-            setTimeout(() => setStep(1), 100),
-            setTimeout(() => setStep(2), 1800),
-            setTimeout(() => setStep(3), 2400),
-            setTimeout(() => setStep(4), 3500),
-            setTimeout(() => setStep(5), 4500),
+            setTimeout(() => setStep(1), 500),   // Logo appears
+            setTimeout(() => setStep(2), 1500),  // Line/Tagline reveal
+            setTimeout(() => setStep(3), 4200),  // Transition start
         ];
 
         return () => {
-            clearInterval(typeInterval);
+            clearInterval(timer);
             timers.forEach(t => clearTimeout(t));
         };
     }, []);
@@ -243,46 +241,60 @@ function Preloader() {
     return (
         <div className="fixed inset-0 z-[100] bg-foreground flex items-center justify-center">
             <div className="text-center">
-                {/* Typewriter logo text */}
-                <div className="h-12 md:h-16 flex items-center justify-center">
-                    <h1 className="font-heading text-3xl md:text-5xl text-white lowercase">
-                        {typedText}
-                        <span className="inline-block w-[2px] h-8 md:h-12 bg-white ml-1 animate-blink align-middle"></span>
+                {/* Logo with Fill Animation */}
+                <div className={`relative mb-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+                    <div className="w-24 h-24 md:w-32 md:h-32 relative mx-auto">
+                        {/* Background / Empty Logo */}
+                        <svg viewBox="0 0 100 100" className="w-full h-full text-white/10 fill-current">
+                            <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" />
+                            <path d="M72.4 33.2c-5.2-6.4-13.6-10.2-22.4-10.2-11.8 0-21.8 7-26.2 17.2-1.2 2.8-.8 6 1.1 8.4 4.5 5.5 11.5 8.7 18.8 8.7 3.2 0 6.3-.6 9.3-1.8 4.4-1.8 7.3-6.1 7.3-10.8 0-2.4-.7-4.7-2.1-6.6zM27.6 66.8c5.2 6.4 13.6 10.2 22.4 10.2 11.8 0 21.8-7 26.2-17.2 1.2-2.8.8-6-1.1-8.4-4.5-5.5-11.5-8.7-18.8-8.7-3.2 0-6.3.6-9.3 1.8-4.4 1.8-7.3 6.1-7.3 10.8 0 2.4.7 4.7 2.1 6.6z" />
+                        </svg>
+
+                        {/* Filling Foreground Logo */}
+                        <div
+                            className="absolute inset-0 overflow-hidden transition-all duration-200 ease-linear"
+                            style={{ height: `${progress}%`, bottom: 0, top: 'auto' }}
+                        >
+                            <svg viewBox="0 0 100 100" className="w-24 h-24 md:w-32 md:h-32 text-white fill-current absolute bottom-0 left-0">
+                                <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" />
+                                <path d="M72.4 33.2c-5.2-6.4-13.6-10.2-22.4-10.2-11.8 0-21.8 7-26.2 17.2-1.2 2.8-.8 6 1.1 8.4 4.5 5.5 11.5 8.7 18.8 8.7 3.2 0 6.3-.6 9.3-1.8 4.4-1.8 7.3-6.1 7.3-10.8 0-2.4-.7-4.7-2.1-6.6zM27.6 66.8c5.2 6.4 13.6 10.2 22.4 10.2 11.8 0 21.8-7 26.2-17.2 1.2-2.8.8-6-1.1-8.4-4.5-5.5-11.5-8.7-18.8-8.7-3.2 0-6.3.6-9.3 1.8-4.4 1.8-7.3 6.1-7.3 10.8 0 2.4.7 4.7 2.1 6.6z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Text Logo reveal after fill starts */}
+                <div className="overflow-hidden h-8">
+                    <h1 className={`font-heading text-2xl text-white lowercase transition-all duration-1000 ${progress > 20 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+                        zuri.corp
                     </h1>
                 </div>
 
-                {/* Line animation */}
-                <div className="mt-8 flex justify-center">
-                    <div
-                        className={`h-px bg-white/30 transition-all duration-1000 ease-out ${step >= 2 ? 'w-32 md:w-48' : 'w-0'}`}
-                    ></div>
-                </div>
-
                 {/* Tagline */}
-                <div className="overflow-hidden mt-6">
+                <div className="overflow-hidden mt-4">
                     <p
-                        className={`font-body text-xs md:text-sm text-white/50 lowercase tracking-widest transition-all duration-700 ${step >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
+                        className={`font-body text-xs text-white/40 lowercase tracking-widest transition-all duration-1000 ${progress > 50 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
                     >
                         the dream is bigger than us
                     </p>
                 </div>
 
-                {/* Loading dots */}
-                <div className={`mt-12 flex justify-center gap-1 transition-opacity duration-500 ${step >= 4 ? 'opacity-100' : 'opacity-0'}`}>
-                    <span className="w-1 h-1 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></span>
-                    <span className="w-1 h-1 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></span>
-                    <span className="w-1 h-1 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></span>
+                {/* Progress Number */}
+                <div className="mt-8">
+                    <span className="font-body text-[10px] text-white/20 tracking-widest uppercase">
+                        {Math.round(progress)}%
+                    </span>
                 </div>
             </div>
 
             {/* Corner accents */}
-            <div className={`absolute top-8 left-8 transition-all duration-700 ${step >= 2 ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="w-8 h-px bg-white/20"></div>
-                <div className="w-px h-8 bg-white/20"></div>
+            <div className={`absolute top-8 left-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="w-8 h-px bg-white/10"></div>
+                <div className="w-px h-8 bg-white/10"></div>
             </div>
-            <div className={`absolute bottom-8 right-8 transition-all duration-700 ${step >= 2 ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="w-8 h-px bg-white/20 ml-auto"></div>
-                <div className="w-px h-8 bg-white/20 ml-auto"></div>
+            <div className={`absolute bottom-8 right-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="w-8 h-px bg-white/10 ml-auto"></div>
+                <div className="w-px h-8 bg-white/10 ml-auto"></div>
             </div>
         </div>
     );
