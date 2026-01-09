@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import logo from "../assets/logo.png";
 
 export default function LandingPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -245,20 +246,14 @@ function Preloader() {
                 <div className={`relative mb-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                     <div className="w-24 h-24 md:w-32 md:h-32 relative mx-auto">
                         {/* Background / Empty Logo */}
-                        <svg viewBox="0 0 100 100" className="w-full h-full text-white/10 fill-current">
-                            <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" />
-                            <path d="M72.4 33.2c-5.2-6.4-13.6-10.2-22.4-10.2-11.8 0-21.8 7-26.2 17.2-1.2 2.8-.8 6 1.1 8.4 4.5 5.5 11.5 8.7 18.8 8.7 3.2 0 6.3-.6 9.3-1.8 4.4-1.8 7.3-6.1 7.3-10.8 0-2.4-.7-4.7-2.1-6.6zM27.6 66.8c5.2 6.4 13.6 10.2 22.4 10.2 11.8 0 21.8-7 26.2-17.2 1.2-2.8.8-6-1.1-8.4-4.5-5.5-11.5-8.7-18.8-8.7-3.2 0-6.3.6-9.3 1.8-4.4 1.8-7.3 6.1-7.3 10.8 0 2.4.7 4.7 2.1 6.6z" />
-                        </svg>
+                        <img src={logo} className="w-full h-full opacity-10" alt="logo" />
 
                         {/* Filling Foreground Logo */}
                         <div
                             className="absolute inset-0 overflow-hidden transition-all duration-200 ease-linear"
                             style={{ height: `${progress}%`, bottom: 0, top: 'auto' }}
                         >
-                            <svg viewBox="0 0 100 100" className="w-24 h-24 md:w-32 md:h-32 text-white fill-current absolute bottom-0 left-0">
-                                <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40z" />
-                                <path d="M72.4 33.2c-5.2-6.4-13.6-10.2-22.4-10.2-11.8 0-21.8 7-26.2 17.2-1.2 2.8-.8 6 1.1 8.4 4.5 5.5 11.5 8.7 18.8 8.7 3.2 0 6.3-.6 9.3-1.8 4.4-1.8 7.3-6.1 7.3-10.8 0-2.4-.7-4.7-2.1-6.6zM27.6 66.8c5.2 6.4 13.6 10.2 22.4 10.2 11.8 0 21.8-7 26.2-17.2 1.2-2.8.8-6-1.1-8.4-4.5-5.5-11.5-8.7-18.8-8.7-3.2 0-6.3.6-9.3 1.8-4.4 1.8-7.3 6.1-7.3 10.8 0 2.4.7 4.7 2.1 6.6z" />
-                            </svg>
+                            <img src={logo} className="w-24 h-24 md:w-32 md:h-32 absolute bottom-0 left-0" alt="logo fill" />
                         </div>
                     </div>
                 </div>
