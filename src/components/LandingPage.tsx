@@ -143,6 +143,24 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Careers Section */}
+            <section id="careers" className="py-20 md:py-32 px-5 md:px-12 lg:px-24 bg-subtle">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-6 lowercase">
+                        join us
+                    </h2>
+                    <p className="font-body text-base md:text-lg text-muted lowercase mb-8">
+                        we're building something meaningful. come help.
+                    </p>
+                    <Link to="/careers" className="inline-flex items-center gap-2 font-body text-base text-foreground lowercase border border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all">
+                        view open roles
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </Link>
+                </div>
+            </section>
+
             {/* Contact Section */}
             <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
                 <div className="max-w-4xl mx-auto">
@@ -250,12 +268,12 @@ function Preloader() {
 
 /* Marquee Component */
 function Marquee() {
-    const words = ["clarity", "restraint", "patience", "intention", "purpose", "impact", "craft", "care"];
+    const products = ["pine", "findr", "blink", "pine", "findr", "blink"];
     return (
         <div className="py-6 md:py-8 border-y border-border overflow-hidden">
             <div className="animate-marquee whitespace-nowrap flex">
-                {[...words, ...words, ...words].map((word, i) => (
-                    <span key={i} className="font-heading text-lg md:text-2xl text-muted/40 mx-4 md:mx-8 lowercase">{word}</span>
+                {[...products, ...products, ...products].map((product, i) => (
+                    <span key={i} className="font-heading text-lg md:text-2xl text-muted/40 mx-4 md:mx-8 lowercase">{product}</span>
                 ))}
             </div>
         </div>
@@ -330,7 +348,6 @@ function Header({ activeSection }: { activeSection: string }) {
         { id: "home", label: "home" },
         { id: "about", label: "about" },
         { id: "projects", label: "products" },
-        { id: "contact", label: "contact" },
     ];
 
     return (
