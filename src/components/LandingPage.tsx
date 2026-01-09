@@ -12,7 +12,7 @@ export default function LandingPage() {
         const timer = setTimeout(() => {
             setIsLoading(false);
             setTimeout(() => setIsLoaded(true), 100);
-        }, 2800);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, []);
@@ -184,13 +184,13 @@ function Preloader() {
             }
         }, 150);
 
-        // Step timings adjusted for typewriter
+        // Step timings adjusted for 5 second loader
         const timers = [
             setTimeout(() => setStep(1), 100),
-            setTimeout(() => setStep(2), 1600),
-            setTimeout(() => setStep(3), 2000),
-            setTimeout(() => setStep(4), 2600),
-            setTimeout(() => setStep(5), 3200),
+            setTimeout(() => setStep(2), 1800),
+            setTimeout(() => setStep(3), 2400),
+            setTimeout(() => setStep(4), 3500),
+            setTimeout(() => setStep(5), 4500),
         ];
 
         return () => {
