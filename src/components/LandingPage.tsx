@@ -1,0 +1,385 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+export default function LandingPage() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+
+    useEffect(() => {
+        // Preloader timing
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+            setTimeout(() => setIsLoaded(true), 100);
+        }, 2800);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (!isLoading) {
+            const handleScroll = () => {
+                const sections = ["home", "about", "projects", "contact"];
+                const scrollPosition = window.scrollY + 150;
+
+                for (const sectionId of sections) {
+                    const element = document.getElementById(sectionId);
+                    if (element) {
+                        const { offsetTop, offsetHeight } = element;
+                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                            setActiveSection(sectionId);
+                            break;
+                        }
+                    }
+                }
+            };
+
+            window.addEventListener("scroll", handleScroll);
+            return () => window.removeEventListener("scroll", handleScroll);
+        }
+    }, [isLoading]);
+
+    // Preloader
+    if (isLoading) {
+        return <Preloader />;
+    }
+
+    return (
+        <div className={`min-h-screen bg-white overflow-x-hidden transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <Header activeSection={activeSection} />
+
+            {/* Hero Section */}
+            <section id="home" className="min-h-screen flex flex-col justify-center pt-24 pb-16 px-5 md:px-12 lg:px-24 relative">
+                <div className={`max-w-5xl transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
+                    <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-medium text-foreground mb-6 md:mb-8 leading-[1.1] lowercase">
+                        building ideas<br />that matter
+                    </h1>
+                    <p className="font-body text-base md:text-xl text-muted max-w-xl leading-relaxed lowercase">
+                        we turn meaningful problems into products that last. no hype. no shortcuts. just work that means something.
+                    </p>
+                </div>
+
+                {/* Scroll indicator */}
+                <div className="absolute bottom-8 md:bottom-12 left-5 md:left-12 lg:left-24 hidden sm:block">
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="w-px h-12 md:h-16 bg-gradient-to-b from-muted to-transparent animate-pulse"></div>
+                        <span className="font-body text-[10px] text-muted lowercase tracking-widest">scroll</span>
+                    </div>
+                </div>
+            </section>
+
+            <Marquee />
+
+            {/* About Section */}
+            <section id="about" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+                        <div>
+                            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-6 md:mb-8 lowercase">
+                                what we do
+                            </h2>
+                            <div className="space-y-4 md:space-y-6">
+                                <p className="font-body text-lg md:text-xl text-foreground leading-relaxed lowercase">
+                                    zuricorp is a company builder.
+                                </p>
+                                <p className="font-body text-sm md:text-lg text-muted leading-relaxed lowercase">
+                                    we explore real problems, design thoughtful solutions, and build products
+                                    with care. we believe the best companies are built slowly, with intention,
+                                    and with a deep understanding of the people they serve.
+                                </p>
+                                <p className="font-body text-sm md:text-lg text-muted leading-relaxed lowercase">
+                                    every product we create starts with a question worth answering.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="space-y-6 md:space-y-8 md:pt-16">
+                            <ValueItem number="01" title="clarity over complexity" description="we remove the unnecessary to reveal what's essential." />
+                            <ValueItem number="02" title="restraint over excess" description="we say no more than we say yes. focus is our advantage." />
+                            <ValueItem number="03" title="long-term over quick wins" description="we build for decades, not quarters. patience compounds." />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Quote Section */}
+            <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 bg-subtle">
+                <div className="max-w-4xl mx-auto text-center">
+                    <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground leading-relaxed italic lowercase">
+                        "we don't build for the sake of building. we build because something needs to exist."
+                    </blockquote>
+                    <p className="font-body text-xs md:text-sm text-muted mt-6 md:mt-8 lowercase">— zuricorp founding principle</p>
+                </div>
+            </section>
+
+            {/* Projects Section */}
+            <section id="projects" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-2 md:gap-4">
+                        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground lowercase">
+                            what we're building
+                        </h2>
+                        <p className="font-body text-xs md:text-sm text-muted lowercase">active projects</p>
+                    </div>
+                    <div className="space-y-0">
+                        <ProjectCard name="pine" description="rethinking how founders connect, learn, and build together" tag="ecosystem" index="01" />
+                        <ProjectCard name="findr" description="discovering cities through local insight" tag="navigation" index="02" />
+                        <ProjectCard name="blink" description="invisible stablecoin settlement rails for global payouts" tag="fintech" index="03" />
+                    </div>
+                </div>
+            </section>
+
+            {/* Stats Section */}
+            <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 border-t border-border">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <StatItem number="3" label="active products" />
+                        <StatItem number="2024" label="founded" />
+                        <StatItem number="∞" label="patience" />
+                        <StatItem number="1" label="mission" />
+                    </div>
+                </div>
+            </section>
+
+            {/* Contact Section */}
+            <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
+                <div className="max-w-4xl mx-auto">
+                    <p className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground leading-relaxed italic lowercase mb-8 md:mb-12">
+                        the work continues.<br />
+                        quietly. intentionally.
+                    </p>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 md:gap-16">
+                        <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-3 font-body text-base md:text-lg text-foreground hover:opacity-70 transition-opacity group lowercase">
+                            <span>get in touch</span>
+                            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        <span className="font-body text-xs md:text-sm text-muted lowercase">hello@zuricorp.com</span>
+                    </div>
+                </div>
+            </section>
+
+            <Footer />
+        </div>
+    );
+}
+
+/* Preloader Component */
+function Preloader() {
+    const [step, setStep] = useState(0);
+
+    useEffect(() => {
+        const timers = [
+            setTimeout(() => setStep(1), 200),
+            setTimeout(() => setStep(2), 600),
+            setTimeout(() => setStep(3), 1000),
+            setTimeout(() => setStep(4), 1800),
+            setTimeout(() => setStep(5), 2400),
+        ];
+        return () => timers.forEach(t => clearTimeout(t));
+    }, []);
+
+    return (
+        <div className="fixed inset-0 z-[100] bg-foreground flex items-center justify-center">
+            <div className="text-center">
+                {/* Animated logo text */}
+                <div className="overflow-hidden">
+                    <h1
+                        className={`font-heading text-3xl md:text-5xl text-white lowercase transition-all duration-700 ${step >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+                            }`}
+                    >
+                        zuri.corp
+                    </h1>
+                </div>
+
+                {/* Line animation */}
+                <div className="mt-8 flex justify-center">
+                    <div
+                        className={`h-px bg-white/30 transition-all duration-1000 ease-out ${step >= 2 ? 'w-32 md:w-48' : 'w-0'
+                            }`}
+                    ></div>
+                </div>
+
+                {/* Tagline */}
+                <div className="overflow-hidden mt-6">
+                    <p
+                        className={`font-body text-xs md:text-sm text-white/50 lowercase tracking-widest transition-all duration-700 ${step >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+                            }`}
+                    >
+                        building with intention
+                    </p>
+                </div>
+
+                {/* Loading dots */}
+                <div className={`mt-12 flex justify-center gap-1 transition-opacity duration-500 ${step >= 4 ? 'opacity-100' : 'opacity-0'}`}>
+                    <span className="w-1 h-1 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></span>
+                    <span className="w-1 h-1 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></span>
+                    <span className="w-1 h-1 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></span>
+                </div>
+            </div>
+
+            {/* Corner accents */}
+            <div className={`absolute top-8 left-8 transition-all duration-700 ${step >= 2 ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="w-8 h-px bg-white/20"></div>
+                <div className="w-px h-8 bg-white/20"></div>
+            </div>
+            <div className={`absolute bottom-8 right-8 transition-all duration-700 ${step >= 2 ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="w-8 h-px bg-white/20 ml-auto"></div>
+                <div className="w-px h-8 bg-white/20 ml-auto"></div>
+            </div>
+        </div>
+    );
+}
+
+/* Marquee Component */
+function Marquee() {
+    const words = ["clarity", "restraint", "patience", "intention", "purpose", "impact", "craft", "care"];
+    return (
+        <div className="py-6 md:py-8 border-y border-border overflow-hidden">
+            <div className="animate-marquee whitespace-nowrap flex">
+                {[...words, ...words, ...words].map((word, i) => (
+                    <span key={i} className="font-heading text-lg md:text-2xl text-muted/40 mx-4 md:mx-8 lowercase">{word}</span>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+/* Value Item Component */
+function ValueItem({ number, title, description }: { number: string; title: string; description: string }) {
+    return (
+        <div className="group cursor-default">
+            <div className="flex items-start gap-3 md:gap-4">
+                <span className="font-body text-xs text-muted pt-1">{number}</span>
+                <div>
+                    <h3 className="font-heading text-base md:text-lg font-medium text-foreground mb-1 md:mb-2 lowercase group-hover:opacity-70 transition-opacity">{title}</h3>
+                    <p className="font-body text-xs md:text-sm text-muted lowercase leading-relaxed">{description}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/* Project Card Component */
+function ProjectCard({ name, description, tag, index }: { name: string; description: string; tag: string; index: string }) {
+    return (
+        <div className="group py-6 md:py-10 border-t border-border cursor-pointer transition-all hover:bg-subtle">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-6 px-1 md:px-6">
+                <div className="flex items-baseline gap-4 md:gap-8">
+                    <span className="font-body text-xs text-muted w-5 md:w-6">{index}</span>
+                    <div>
+                        <h3 className="font-heading text-2xl md:text-4xl font-medium text-foreground group-hover:opacity-70 transition-opacity lowercase">{name}</h3>
+                        <span className="font-body text-[10px] md:text-xs text-muted uppercase tracking-widest mt-1 inline-block">{tag}</span>
+                    </div>
+                </div>
+                <div className="flex items-center gap-4 pl-9 md:pl-0 md:max-w-md">
+                    <p className="font-body text-sm md:text-base text-muted lowercase">{description}</p>
+                    <svg className="w-5 h-5 md:w-6 md:h-6 text-foreground flex-shrink-0 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/* Stat Item Component */
+function StatItem({ number, label }: { number: string; label: string }) {
+    return (
+        <div className="text-center md:text-left">
+            <p className="font-heading text-3xl md:text-5xl font-medium text-foreground mb-1 md:mb-2">{number}</p>
+            <p className="font-body text-xs md:text-sm text-muted lowercase">{label}</p>
+        </div>
+    );
+}
+
+/* Header Component */
+function Header({ activeSection }: { activeSection: string }) {
+    const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 50);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToSection = (id: string) => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        setMobileMenuOpen(false);
+    };
+
+    const navItems = [
+        { id: "home", label: "home" },
+        { id: "about", label: "about" },
+        { id: "projects", label: "products" },
+        { id: "contact", label: "contact" },
+    ];
+
+    return (
+        <>
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-sm border-b border-border" : "bg-transparent"}`}>
+                <nav className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 py-4 md:py-5">
+                    <div className="flex items-center justify-between">
+                        <button onClick={() => scrollToSection("home")} className="font-heading text-base md:text-xl font-medium text-foreground lowercase hover:opacity-70 transition-opacity">
+                            zuri.corp
+                        </button>
+                        <div className="hidden md:flex items-center space-x-10">
+                            {navItems.map((item) => (
+                                <button key={item.id} onClick={() => scrollToSection(item.id)} className={`font-body text-sm lowercase transition-all relative ${activeSection === item.id ? "text-foreground" : "text-muted hover:text-foreground"}`}>
+                                    {item.label}
+                                    {activeSection === item.id && <span className="absolute -bottom-1 left-0 right-0 h-px bg-foreground"></span>}
+                                </button>
+                            ))}
+                        </div>
+                        <a href="mailto:hello@zuricorp.com" className="hidden md:block font-body text-sm text-foreground lowercase border border-foreground px-5 py-2.5 hover:bg-foreground hover:text-white transition-all">
+                            let's talk
+                        </a>
+                        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-body text-sm text-foreground lowercase p-2">
+                            {mobileMenuOpen ? "close" : "menu"}
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            {mobileMenuOpen && (
+                <div className="fixed inset-0 z-40 bg-white md:hidden">
+                    <div className="flex flex-col items-center justify-center h-full space-y-8">
+                        {navItems.map((item) => (
+                            <button key={item.id} onClick={() => scrollToSection(item.id)} className={`font-heading text-3xl lowercase ${activeSection === item.id ? "text-foreground" : "text-muted"}`}>
+                                {item.label}
+                            </button>
+                        ))}
+                        <a href="mailto:hello@zuricorp.com" className="font-body text-lg text-foreground lowercase border border-foreground px-8 py-3 mt-8">
+                            let's talk
+                        </a>
+                    </div>
+                </div>
+            )}
+        </>
+    );
+}
+
+/* Footer Component */
+function Footer() {
+    return (
+        <footer className="py-12 md:py-16 px-5 md:px-12 lg:px-24 bg-foreground">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8 mb-8 md:mb-12">
+                    <span className="font-heading text-xl md:text-2xl text-white lowercase">zuri.corp</span>
+                    <div className="flex items-center gap-6 md:gap-8">
+                        <a href="#" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">twitter</a>
+                        <a href="#" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">linkedin</a>
+                        <a href="#" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">email</a>
+                    </div>
+                </div>
+                <div className="pt-6 md:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4">
+                    <p className="font-body text-xs md:text-sm text-white/40 lowercase">© {new Date().getFullYear()} zuricorp. all rights reserved.</p>
+                    <p className="font-body text-xs md:text-sm text-white/40 lowercase">building with intention.</p>
+                </div>
+            </div>
+        </footer>
+    );
+}
