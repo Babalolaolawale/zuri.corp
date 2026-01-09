@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 export default function LandingPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -347,10 +348,13 @@ function Header({ activeSection }: { activeSection: string }) {
                                     {activeSection === item.id && <span className="absolute -bottom-1 left-0 right-0 h-px bg-foreground"></span>}
                                 </button>
                             ))}
+                            <Link to="/careers" className="font-body text-sm text-muted hover:text-foreground lowercase transition-all">
+                                careers
+                            </Link>
                         </div>
-                        <a href="mailto:hello@zuricorp.com" className="hidden md:block font-body text-sm text-foreground lowercase border border-foreground px-5 py-2.5 hover:bg-foreground hover:text-white transition-all">
-                            let's talk
-                        </a>
+                        <Link to="/careers" className="hidden md:block font-body text-sm text-foreground lowercase border border-foreground px-5 py-2.5 hover:bg-foreground hover:text-white transition-all">
+                            we're hiring
+                        </Link>
                         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-body text-sm text-foreground lowercase p-2">
                             {mobileMenuOpen ? "close" : "menu"}
                         </button>
@@ -366,9 +370,12 @@ function Header({ activeSection }: { activeSection: string }) {
                                 {item.label}
                             </button>
                         ))}
-                        <a href="mailto:hello@zuricorp.com" className="font-body text-lg text-foreground lowercase border border-foreground px-8 py-3 mt-8">
-                            let's talk
-                        </a>
+                        <Link to="/careers" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl text-muted lowercase">
+                            careers
+                        </Link>
+                        <Link to="/careers" className="font-body text-lg text-foreground lowercase border border-foreground px-8 py-3 mt-8">
+                            we're hiring
+                        </Link>
                     </div>
                 </div>
             )}
