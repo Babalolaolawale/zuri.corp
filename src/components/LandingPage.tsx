@@ -50,19 +50,19 @@ export default function LandingPage() {
             <Header activeSection={activeSection} />
 
             {/* Hero Section */}
-            <section id="home" className="min-h-screen flex flex-col justify-center pt-24 pb-16 px-5 md:px-12 lg:px-24 relative">
+            <section id="home" className="min-h-[70vh] md:min-h-screen flex flex-col justify-center pt-20 pb-10 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative">
                 <div className={`max-w-5xl transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
-                    <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-medium text-foreground mb-6 md:mb-8 leading-[1.1] lowercase">
+                    <p className="font-body text-xs md:text-sm text-muted mb-3 md:mb-6 tracking-widest uppercase">company builder</p>
+                    <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-medium text-foreground mb-4 md:mb-8 leading-[1.1] lowercase">
                         building ideas<br />that matter
                     </h1>
-                    <p className="font-body text-base md:text-xl text-muted max-w-xl leading-relaxed lowercase">
+                    <p className="font-body text-sm md:text-xl text-muted max-w-xl leading-relaxed lowercase">
                         we turn meaningful problems into products that last. no hype. no shortcuts. just work that means something.
                     </p>
                 </div>
 
                 {/* Scroll indicator */}
-                <div className="absolute bottom-8 md:bottom-12 left-5 md:left-12 lg:left-24 hidden sm:block">
+                <div className="absolute bottom-6 md:bottom-12 left-5 md:left-12 lg:left-24 hidden sm:block">
                     <div className="flex flex-col items-center gap-2">
                         <div className="w-px h-12 md:h-16 bg-gradient-to-b from-muted to-transparent animate-pulse"></div>
                         <span className="font-body text-[10px] text-muted lowercase tracking-widest">scroll</span>
