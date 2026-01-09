@@ -158,7 +158,7 @@ export default function LandingPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         <StatItem number="3" label="active products" />
-                        <StatItem number="2024" label="founded" />
+                        <StatItem number="2022" label="founded" />
                         <StatItem number="∞" label="experiments ongoing" />
                         <StatItem number="1" label="mission" />
                     </div>
@@ -438,7 +438,7 @@ function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8 mb-8 md:mb-12">
                     <span className="font-heading text-xl md:text-2xl text-white lowercase">zuri.corp</span>
                     <div className="flex items-center gap-6 md:gap-8">
-                        <a href="#" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">twitter</a>
+                        <a href="https://x.com/zuri_corp" target="_blank" rel="noopener noreferrer" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">twitter</a>
                         <a href="#" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">linkedin</a>
                         <a href="#" className="font-body text-xs md:text-sm text-white/60 hover:text-white transition-colors lowercase">email</a>
                     </div>
