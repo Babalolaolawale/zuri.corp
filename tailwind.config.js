@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Playfair Display"', 'serif'],
+        heading: ['"EB Garamond"', 'serif'],
         body: ['Inter', 'sans-serif'],
       },
       colors: {
