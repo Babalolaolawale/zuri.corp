@@ -369,9 +369,9 @@ function Header({ activeSection }: { activeSection: string }) {
                                 careers
                             </Link>
                         </div>
-                        <Link to="/careers" className="hidden md:block font-body text-sm text-foreground lowercase border border-foreground px-5 py-2.5 hover:bg-foreground hover:text-white transition-all">
-                            we're hiring
-                        </Link>
+                        <a href="mailto:hello@zuricorp.com" className="hidden md:block font-body text-sm text-foreground lowercase border border-foreground px-5 py-2.5 hover:bg-foreground hover:text-white transition-all">
+                            contact
+                        </a>
                         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-body text-sm text-foreground lowercase p-2">
                             {mobileMenuOpen ? "close" : "menu"}
                         </button>
@@ -390,9 +390,9 @@ function Header({ activeSection }: { activeSection: string }) {
                         <Link to="/careers" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl text-muted lowercase">
                             careers
                         </Link>
-                        <Link to="/careers" className="font-body text-lg text-foreground lowercase border border-foreground px-8 py-3 mt-8">
-                            we're hiring
-                        </Link>
+                        <a href="mailto:hello@zuricorp.com" className="font-body text-lg text-foreground lowercase border border-foreground px-8 py-3 mt-8">
+                            contact
+                        </a>
                     </div>
                 </div>
             )}
