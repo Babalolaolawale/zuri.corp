@@ -282,15 +282,7 @@ function Preloader() {
                 </div>
             </div>
 
-            {/* Corner accents */}
-            <div className={`absolute top-8 left-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="w-8 h-px bg-white/10"></div>
-                <div className="w-px h-8 bg-white/10"></div>
-            </div>
-            <div className={`absolute bottom-8 right-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="w-8 h-px bg-white/10 ml-auto"></div>
-                <div className="w-px h-8 bg-white/10 ml-auto"></div>
-            </div>
+
         </div>
     );
 }
