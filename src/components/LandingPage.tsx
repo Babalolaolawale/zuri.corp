@@ -51,21 +51,42 @@ export default function LandingPage() {
             <Header activeSection={activeSection} />
 
             {/* Hero Section */}
-            <section id="home" className="min-h-[70vh] md:min-h-screen flex flex-col justify-center pt-20 pb-10 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative">
-                <div className={`max-w-5xl transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <p className="font-body text-xs md:text-sm text-muted mb-3 md:mb-6 tracking-widest uppercase">company builder</p>
-                    <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-medium text-foreground mb-4 md:mb-8 leading-[1.1] lowercase">
+            <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
+                {/* Subtle gradient background */}
+                <div className="absolute inset-0 bg-gradient-radial from-gray-50 via-white to-white opacity-80"></div>
+
+                {/* Decorative architectural lines */}
+                <div className="absolute top-20 right-10 md:right-24 w-px h-32 md:h-48 bg-gradient-to-b from-border to-transparent"></div>
+                <div className="absolute bottom-20 left-10 md:left-24 w-32 md:w-48 h-px bg-gradient-to-r from-border to-transparent"></div>
+
+                {/* Pulsing dot accent */}
+                <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/30 rounded-full animate-pulse hidden md:block"></div>
+
+                <div className={`max-w-5xl relative z-10 text-center md:text-left transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
+                    <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-foreground mb-5 md:mb-8 leading-[1.05] lowercase">
                         building ideas<br />that matter
                     </h1>
-                    <p className="font-body text-sm md:text-xl text-muted max-w-xl leading-relaxed lowercase">
+                    <p className="font-body text-base md:text-xl text-muted max-w-xl leading-relaxed lowercase mb-8 md:mb-10 mx-auto md:mx-0">
                         we turn meaningful problems into products that last. no hype. no shortcuts. just work that means something.
                     </p>
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                        <a href="#projects" className="inline-flex items-center gap-2 font-body text-sm text-white bg-foreground px-6 py-3 hover:bg-foreground/90 transition-all lowercase">
+                            see our work
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                        <a href="mailto:hello@zuricorp.com" className="font-body text-sm text-muted hover:text-foreground transition-colors lowercase">
+                            get in touch
+                        </a>
+                    </div>
                 </div>
 
                 {/* Scroll indicator */}
-                <div className="absolute bottom-6 md:bottom-12 left-5 md:left-12 lg:left-24 hidden sm:block">
+                <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0 lg:left-24">
                     <div className="flex flex-col items-center gap-2">
-                        <div className="w-px h-12 md:h-16 bg-gradient-to-b from-muted to-transparent animate-pulse"></div>
+                        <div className="w-px h-10 md:h-16 bg-gradient-to-b from-muted to-transparent animate-pulse"></div>
                         <span className="font-body text-[10px] text-muted lowercase tracking-widest">scroll</span>
                     </div>
                 </div>
@@ -269,12 +290,20 @@ function Preloader() {
 
 /* Marquee Component */
 function Marquee() {
-    const products = ["pine", "findr", "blink", "pine", "findr", "blink"];
+    const products = [
+        { name: "pine", icon: "◆" },
+        { name: "findr", icon: "●" },
+        { name: "blink", icon: "◼" },
+    ];
+    const items = [...products, ...products, ...products, ...products];
     return (
-        <div className="py-6 md:py-8 border-y border-border overflow-hidden">
-            <div className="animate-marquee whitespace-nowrap flex">
-                {[...products, ...products, ...products].map((product, i) => (
-                    <span key={i} className="font-heading text-lg md:text-2xl text-muted/40 mx-4 md:mx-8 lowercase">{product}</span>
+        <div className="py-8 md:py-10 bg-subtle/50 overflow-hidden">
+            <div className="animate-marquee whitespace-nowrap flex items-center">
+                {items.map((product, i) => (
+                    <span key={i} className="flex items-center gap-2 mx-6 md:mx-10">
+                        <span className="text-foreground/20 text-sm">{product.icon}</span>
+                        <span className="font-heading text-xl md:text-3xl text-foreground/60 lowercase">{product.name}</span>
+                    </span>
                 ))}
             </div>
         </div>
