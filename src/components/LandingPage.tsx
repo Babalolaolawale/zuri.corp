@@ -159,7 +159,7 @@ export default function LandingPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         <StatItem number="3" label="active products" />
                         <StatItem number="2024" label="founded" />
-                        <StatItem number="∞" label="patience" />
+                        <StatItem number="∞" label="experiments ongoing" />
                         <StatItem number="1" label="mission" />
                     </div>
                 </div>
