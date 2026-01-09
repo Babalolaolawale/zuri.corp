@@ -147,7 +147,7 @@ export default function LandingPage() {
             <section id="careers" className="py-20 md:py-32 px-5 md:px-12 lg:px-24 bg-subtle">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-6 lowercase">
-                        join us
+                        work at zuri.corp
                     </h2>
                     <p className="font-body text-base md:text-lg text-muted lowercase mb-8">
                         we're building something meaningful. come help.
