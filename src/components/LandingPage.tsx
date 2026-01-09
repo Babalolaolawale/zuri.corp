@@ -96,9 +96,10 @@ export default function LandingPage() {
                             </div>
                         </div>
                         <div className="space-y-6 md:space-y-8 md:pt-16">
-                            <ValueItem number="01" title="clarity over complexity" description="we remove the unnecessary to reveal what's essential." />
-                            <ValueItem number="02" title="restraint over excess" description="we say no more than we say yes. focus is our advantage." />
-                            <ValueItem number="03" title="long-term over quick wins" description="we build for decades, not quarters. patience compounds." />
+                            <ValueItem number="01" title="meaningful innovation" description="we build things that are beautiful, useful, and move the world forward." />
+                            <ValueItem number="02" title="independent leadership" description="each venture is led by the best minds, with the freedom to operate with clarity." />
+                            <ValueItem number="03" title="bold exploration" description="we go where we can make a real difference, bringing our philosophy to new spaces." />
+                            <ValueItem number="04" title="lasting impact" description="this isn't just business. it's about solving real problems that matter." />
                         </div>
                     </div>
                 </div>
