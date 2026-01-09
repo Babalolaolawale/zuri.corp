@@ -208,7 +208,7 @@ function Preloader() {
                         className={`font-body text-xs md:text-sm text-white/50 lowercase tracking-widest transition-all duration-700 ${step >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
                             }`}
                     >
-                        building with intention
+                        the dream is bigger than us
                     </p>
                 </div>
 
@@ -377,7 +377,7 @@ function Footer() {
                 </div>
                 <div className="pt-6 md:pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 md:gap-4">
                     <p className="font-body text-xs md:text-sm text-white/40 lowercase">© {new Date().getFullYear()} zuricorp. all rights reserved.</p>
-                    <p className="font-body text-xs md:text-sm text-white/40 lowercase">building with intention.</p>
+                    <p className="font-body text-xs md:text-sm text-white/40 lowercase">the dream is bigger than us.</p>
                 </div>
             </div>
         </footer>
