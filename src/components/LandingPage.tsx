@@ -243,7 +243,7 @@ function Preloader() {
         <div className="fixed inset-0 z-[100] bg-foreground flex items-center justify-center">
             <div className="text-center">
                 {/* Logo with Fill Animation */}
-                <div className={`relative mb-8 transition-all duration-1000 ${step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+                <div className={`relative mb-4 transition-all duration-1000 ${step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
                     <div className="w-24 h-24 md:w-32 md:h-32 relative mx-auto">
                         {/* Background / Empty Logo */}
                         <img src={logo} className="w-full h-full opacity-10" alt="logo" />
