@@ -169,44 +169,58 @@ export default function LandingPage() {
 /* Preloader Component */
 function Preloader() {
     const [step, setStep] = useState(0);
+    const [typedText, setTypedText] = useState("");
+    const fullText = "zuri.corp";
 
     useEffect(() => {
+        // Typewriter effect
+        let charIndex = 0;
+        const typeInterval = setInterval(() => {
+            if (charIndex < fullText.length) {
+                setTypedText(fullText.slice(0, charIndex + 1));
+                charIndex++;
+            } else {
+                clearInterval(typeInterval);
+            }
+        }, 150);
+
+        // Step timings adjusted for typewriter
         const timers = [
-            setTimeout(() => setStep(1), 200),
-            setTimeout(() => setStep(2), 600),
-            setTimeout(() => setStep(3), 1000),
-            setTimeout(() => setStep(4), 1800),
-            setTimeout(() => setStep(5), 2400),
+            setTimeout(() => setStep(1), 100),
+            setTimeout(() => setStep(2), 1600),
+            setTimeout(() => setStep(3), 2000),
+            setTimeout(() => setStep(4), 2600),
+            setTimeout(() => setStep(5), 3200),
         ];
-        return () => timers.forEach(t => clearTimeout(t));
+
+        return () => {
+            clearInterval(typeInterval);
+            timers.forEach(t => clearTimeout(t));
+        };
     }, []);
 
     return (
         <div className="fixed inset-0 z-[100] bg-foreground flex items-center justify-center">
             <div className="text-center">
-                {/* Animated logo text */}
-                <div className="overflow-hidden">
-                    <h1
-                        className={`font-heading text-3xl md:text-5xl text-white lowercase transition-all duration-700 ${step >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-                            }`}
-                    >
-                        zuri.corp
+                {/* Typewriter logo text */}
+                <div className="h-12 md:h-16 flex items-center justify-center">
+                    <h1 className="font-heading text-3xl md:text-5xl text-white lowercase">
+                        {typedText}
+                        <span className="inline-block w-[2px] h-8 md:h-12 bg-white ml-1 animate-blink align-middle"></span>
                     </h1>
                 </div>
 
                 {/* Line animation */}
                 <div className="mt-8 flex justify-center">
                     <div
-                        className={`h-px bg-white/30 transition-all duration-1000 ease-out ${step >= 2 ? 'w-32 md:w-48' : 'w-0'
-                            }`}
+                        className={`h-px bg-white/30 transition-all duration-1000 ease-out ${step >= 2 ? 'w-32 md:w-48' : 'w-0'}`}
                     ></div>
                 </div>
 
                 {/* Tagline */}
                 <div className="overflow-hidden mt-6">
                     <p
-                        className={`font-body text-xs md:text-sm text-white/50 lowercase tracking-widest transition-all duration-700 ${step >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-                            }`}
+                        className={`font-body text-xs md:text-sm text-white/50 lowercase tracking-widest transition-all duration-700 ${step >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
                     >
                         the dream is bigger than us
                     </p>

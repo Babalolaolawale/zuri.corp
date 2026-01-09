@@ -90,6 +90,24 @@ body {
   animation: marquee 20s linear infinite;
 }
 
+/* Blinking cursor for typewriter */
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.8s infinite;
+}
+
 /* Custom utilities */
 @layer utilities {
   .text-balance {
