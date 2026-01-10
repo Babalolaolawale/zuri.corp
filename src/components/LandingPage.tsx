@@ -131,7 +131,7 @@ export default function LandingPage() {
             <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 bg-subtle">
                 <div className="max-w-4xl mx-auto text-center">
                     <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground leading-relaxed italic lowercase">
-                        "we don't build for the sake of building. we build because something needs to exist."
+                        "we don't build for the sake of building. we build because some things need to exist."
                     </blockquote>
                     <p className="font-body text-xs md:text-sm text-muted mt-6 md:mt-8 lowercase">— zuricorp founding principle</p>
                 </div>
