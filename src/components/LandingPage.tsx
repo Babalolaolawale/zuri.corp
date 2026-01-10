@@ -53,6 +53,7 @@ export default function LandingPage() {
 
             {/* Hero Section */}
             <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
+                <div className="noise-overlay"></div>
                 <div className="absolute inset-0 bg-gradient-radial from-gray-50 via-white to-white opacity-80"></div>
 
                 <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
