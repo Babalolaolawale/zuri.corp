@@ -53,19 +53,20 @@ export default function LandingPage() {
 
             {/* Hero Section */}
             <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
-                {/* Subtle gradient background */}
+                {/* Visual Texture Layers */}
+                <div className="noise-overlay opacity-[0.03]"></div>
                 <div className="absolute inset-0 bg-gradient-radial from-gray-50 via-white to-white opacity-80"></div>
 
                 {/* Decorative architectural lines */}
-                <div className="absolute top-20 right-10 md:right-24 w-px h-32 md:h-48 bg-gradient-to-b from-border to-transparent"></div>
-                <div className="absolute bottom-20 left-10 md:left-24 w-32 md:w-48 h-px bg-gradient-to-r from-border to-transparent"></div>
+                <div className="absolute top-20 right-10 md:right-24 w-px h-32 md:h-48 bg-gradient-to-b from-border to-transparent opacity-40"></div>
+                <div className="absolute bottom-20 left-10 md:left-24 w-32 md:w-48 h-px bg-gradient-to-r from-border to-transparent opacity-40"></div>
 
                 <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
                 <div className={`max-w-5xl relative z-10 text-center md:text-left ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
                     <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-foreground mb-5 md:mb-8 leading-[1.05] lowercase">
-                        building ideas<br />that matter
+                        building ideas<br /><span className="italic">that matter</span>
                     </h1>
                     <p className="font-body text-base md:text-xl text-muted max-w-xl leading-relaxed lowercase mb-8 md:mb-10 mx-auto md:mx-0">
                         we turn meaningful problems into products that last. no hype. no shortcuts. just work that means something.
