@@ -60,10 +60,9 @@ export default function LandingPage() {
                 <div className="absolute top-20 right-10 md:right-24 w-px h-32 md:h-48 bg-gradient-to-b from-border to-transparent"></div>
                 <div className="absolute bottom-20 left-10 md:left-24 w-32 md:w-48 h-px bg-gradient-to-r from-border to-transparent"></div>
 
-                {/* Pulsing dot accent */}
-                <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/30 rounded-full animate-pulse hidden md:block"></div>
+                <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
-                <div className={`max-w-5xl relative z-10 text-center md:text-left transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div className={`max-w-5xl relative z-10 text-center md:text-left ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
                     <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-foreground mb-5 md:mb-8 leading-[1.05] lowercase">
                         building ideas<br />that matter
@@ -87,7 +86,7 @@ export default function LandingPage() {
                 {/* Scroll indicator */}
                 <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0 lg:left-24">
                     <div className="flex flex-col items-center gap-2">
-                        <div className="w-px h-10 md:h-16 bg-gradient-to-b from-muted to-transparent animate-pulse"></div>
+                        <div className="w-px h-10 md:h-16 bg-gradient-to-b from-muted to-transparent"></div>
                         <span className="font-body text-[10px] text-muted lowercase tracking-widest">scroll</span>
                     </div>
                 </div>
