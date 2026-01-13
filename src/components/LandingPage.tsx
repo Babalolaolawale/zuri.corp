@@ -308,7 +308,7 @@ function Marquee() {
     ];
     const items = [...products, ...products, ...products, ...products];
     return (
-        <div className="py-8 md:py-10 bg-gray-50 border-t border-b border-gray-200 overflow-hidden">
+        <div className="py-4 md:py-6 bg-gray-50 border-t border-b border-gray-200 overflow-hidden">
             <div className="animate-marquee whitespace-nowrap flex items-center">
                 {items.map((product, i) => (
                     <span key={i} className="flex items-center gap-2 mx-6 md:mx-10">
