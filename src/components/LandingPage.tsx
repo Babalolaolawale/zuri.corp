@@ -83,14 +83,12 @@ export default function LandingPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
-                        <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-2 font-body text-sm text-foreground border-2 border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all lowercase">
+                        <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-2 font-body text-sm text-foreground border border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all lowercase">
                             get in touch
                         </a>
                     </div>
                 </div>
             </section>
-
-            <WaveDivider className="-mt-1" />
 
             <Marquee />
 
@@ -136,8 +134,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            <WaveDivider className="-mt-1 rotate-180" />
-
             {/* Projects Section */}
             <section id="projects" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
                 <div className="max-w-6xl mx-auto">
@@ -154,8 +150,6 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
-
-            <WaveDivider className="-mt-1" />
 
             {/* Stats Section */}
             <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 border-t border-border">
@@ -178,7 +172,7 @@ export default function LandingPage() {
                     <p className="font-body text-base md:text-lg text-muted lowercase mb-8">
                         we're building something meaningful. come help.
                     </p>
-                    <Link to="/careers" className="inline-flex items-center gap-2 font-body text-base text-foreground lowercase border-2 border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all">
+                    <Link to="/careers" className="inline-flex items-center gap-2 font-body text-base text-foreground lowercase border border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all">
                         view open roles
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -186,8 +180,6 @@ export default function LandingPage() {
                     </Link>
                 </div>
             </section>
-
-            <WaveDivider className="-mt-1 rotate-180" />
 
             {/* Contact Section */}
             <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
