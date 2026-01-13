@@ -5,19 +5,29 @@ import { Link } from "react-router";
 import logo from "../assets/logo.png";
 
 export default function LandingPage() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(() => {
+        // Only show preloader if not already shown in this session
+        return !sessionStorage.getItem('preloaderShown');
+    });
     const [isLoaded, setIsLoaded] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
 
     useEffect(() => {
+        // Skip preloader if already shown
+        if (!isLoading) {
+            setIsLoaded(true);
+            return;
+        }
+
         // Preloader timing
         const timer = setTimeout(() => {
             setIsLoading(false);
+            sessionStorage.setItem('preloaderShown', 'true');
             setTimeout(() => setIsLoaded(true), 100);
         }, 5000);
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [isLoading]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -73,12 +83,14 @@ export default function LandingPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
-                        <a href="mailto:hello@zuricorp.com" className="font-body text-sm text-muted hover:text-foreground transition-colors lowercase">
+                        <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-2 font-body text-sm text-foreground border border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all lowercase">
                             get in touch
                         </a>
                     </div>
                 </div>
             </section>
+
+            <WaveDivider className="-mt-1" />
 
             <Marquee />
 
@@ -170,6 +182,8 @@ export default function LandingPage() {
                     </Link>
                 </div>
             </section>
+
+            <WaveDivider className="-mt-1 rotate-180" />
 
             {/* Contact Section */}
             <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
@@ -435,5 +449,25 @@ function Footer() {
                 </div>
             </div>
         </footer>
+    );
+}
+
+/* Wave Divider Component */
+function WaveDivider({ className = "" }: { className?: string }) {
+    return (
+        <div className={`w-full overflow-hidden ${className}`}>
+            <svg
+                viewBox="0 0 1200 80"
+                preserveAspectRatio="none"
+                className="w-full h-12 md:h-16 lg:h-20"
+                style={{ display: 'block' }}
+            >
+                <path
+                    d="M0,40 C300,10 600,70 900,40 C1050,20 1150,50 1200,40 L1200,80 L0,80 Z"
+                    fill="currentColor"
+                    className="text-white"
+                />
+            </svg>
+        </div>
     );
 }
