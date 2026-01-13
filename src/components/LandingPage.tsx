@@ -200,6 +200,21 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* Dramatic Wave Divider */}
+            <div className="relative h-24 md:h-32 lg:h-40 bg-white overflow-hidden">
+                <svg
+                    viewBox="0 0 1200 120"
+                    preserveAspectRatio="none"
+                    className="absolute bottom-0 w-full h-full"
+                >
+                    <path
+                        d="M0,0 C150,80 350,80 500,30 C650,-20 800,50 900,70 C1000,90 1100,60 1200,40 L1200,120 L0,120 Z"
+                        fill="#1a1a1a"
+                        className=""
+                    />
+                </svg>
+            </div>
+
             <Footer />
         </div>
     );
