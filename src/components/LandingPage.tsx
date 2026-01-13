@@ -136,7 +136,9 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Projects Section */}
+            <WaveDivider className="-mt-1 rotate-180" />
+
+            {/* Projects Section */}}
             <section id="projects" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-2 md:gap-4">
@@ -152,6 +154,8 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            <WaveDivider className="-mt-1" />
 
             {/* Stats Section */}
             <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 border-t border-border">
