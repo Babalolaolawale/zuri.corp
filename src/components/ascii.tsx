@@ -27,7 +27,7 @@ export function AsciiHeroBackground() {
     let animationId: number;
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#1a1a1a'; // Maximum visibility text color
+      ctx.fillStyle = 'rgba(26, 26, 26, 0.25)'; // Balanced visibility text color
       ctx.font = '14px monospace';
       
       const size = 20;
@@ -72,7 +72,7 @@ export function AsciiHeroBackground() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-100 z-0" />;
+  return <canvas ref={canvasRef} className="hidden md:block absolute inset-0 pointer-events-none opacity-60 z-0" />;
 }
 
 export function AsciiWave() {
