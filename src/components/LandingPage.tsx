@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import logo from "../assets/logo.png";
-import { AsciiHeroBackground, AsciiWave, AsciiNetwork, AsciiFooterEmblem } from "./ascii";
+import { AsciiWave, AsciiNetwork, AsciiFooterEmblem } from "./ascii";
+import { CustomCursor, DecryptText, ScrollDistort } from "./interactive";
 
 export default function LandingPage() {
     const [isLoading, setIsLoading] = useState(() => {
@@ -60,11 +61,13 @@ export default function LandingPage() {
 
     return (
         <div className={`min-h-screen bg-white overflow-x-hidden transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <CustomCursor />
             <Header activeSection={activeSection} />
+            <ScrollDistort>
 
             {/* Hero Section */}
             <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-20 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-40 overflow-hidden">
                     <AsciiWave />
                 </div>
                 <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/80 to-white pointer-events-none z-0"></div>
@@ -74,7 +77,7 @@ export default function LandingPage() {
                 <div className={`max-w-5xl relative z-10 text-center md:text-left ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
                     <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
                     <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-foreground mb-5 md:mb-8 leading-[1.05] lowercase">
-                        building ideas<br />that matter
+                        <DecryptText text={"building ideas\nthat matter"} />
                     </h1>
                     <p className="font-body text-base md:text-xl text-muted max-w-xl leading-relaxed lowercase mb-8 md:mb-10 mx-auto md:mx-0">
                         we turn meaningful problems into products that last. no hype. no shortcuts. just work that means something.
@@ -101,7 +104,7 @@ export default function LandingPage() {
                     <div className="grid md:grid-cols-2 gap-12 md:gap-24">
                         <div>
                             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-6 md:mb-8 lowercase">
-                                what we do
+                                <DecryptText text="what we do" />
                             </h2>
                             <div className="space-y-4 md:space-y-6">
                                 <p className="font-body text-lg md:text-xl text-foreground leading-relaxed lowercase">
@@ -142,7 +145,7 @@ export default function LandingPage() {
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-2 md:gap-4">
                         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground lowercase">
-                            our singular focus
+                            <DecryptText text="our singular focus" />
                         </h2>
                         <p className="font-body text-xs md:text-sm text-muted lowercase">active venture</p>
                     </div>
@@ -187,7 +190,7 @@ export default function LandingPage() {
             <section id="careers" className="py-20 md:py-32 px-5 md:px-12 lg:px-24 bg-subtle">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-6 lowercase">
-                        work at zuri.corp
+                        <DecryptText text="work at zuri.corp" />
                     </h2>
                     <p className="font-body text-base md:text-lg text-muted lowercase mb-8">
                         we're building something meaningful. come help.
@@ -205,8 +208,7 @@ export default function LandingPage() {
             <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
                 <div className="max-w-4xl mx-auto">
                     <p className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground leading-relaxed italic lowercase mb-8 md:mb-12">
-                        the work continues.<br />
-                        quietly. intentionally.
+                        <DecryptText text={"the work continues.\nquietly. intentionally."} />
                     </p>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 md:gap-16">
                         <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-3 font-body text-base md:text-lg text-foreground hover:opacity-70 transition-opacity group lowercase">
@@ -238,6 +240,7 @@ export default function LandingPage() {
             </div>
 
             <Footer />
+            </ScrollDistort>
         </div>
     );
 }
