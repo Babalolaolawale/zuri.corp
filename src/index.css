@@ -185,20 +185,7 @@ body {
 
 /* Scrollbar - minimal */
 ::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f5f5f5;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #d1d1d1;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #b0b0b0;
+  display: none;
 }
 
 /* Smooth scrolling */

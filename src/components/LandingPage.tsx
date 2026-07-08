@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import logo from "../assets/logo.png";
 import { AsciiWave, AsciiNetwork, AsciiFooterEmblem } from "./ascii";
-import { CustomCursor, DecryptText, ScrollDistort } from "./interactive";
+import { CustomCursor, DecryptText, ScrollDistort, SmoothScrollProvider } from "./interactive";
 
 export default function LandingPage() {
     const [isLoading, setIsLoading] = useState(() => {
@@ -61,6 +61,7 @@ export default function LandingPage() {
 
     return (
         <div className={`min-h-screen bg-white overflow-x-hidden transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <SmoothScrollProvider>
             <CustomCursor />
             <Header activeSection={activeSection} />
             <ScrollDistort>
@@ -70,7 +71,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-40 overflow-hidden">
                     <AsciiWave />
                 </div>
-                <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/80 to-white pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/75 to-white pointer-events-none z-0"></div>
 
                 <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
@@ -241,6 +242,7 @@ export default function LandingPage() {
 
             <Footer />
             </ScrollDistort>
+            </SmoothScrollProvider>
         </div>
     );
 }

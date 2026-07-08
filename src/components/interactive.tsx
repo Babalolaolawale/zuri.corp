@@ -1,5 +1,25 @@
 import { useEffect, useState, useRef } from "react";
 import { useInView } from "framer-motion";
+import Lenis from 'lenis';
+
+export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
+    useEffect(() => {
+        const lenis = new Lenis();
+
+        function raf(time: number) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        return () => {
+            lenis.destroy();
+        };
+    }, []);
+
+    return <>{children}</>;
+}
 
 export function CustomCursor() {
     const [pos, setPos] = useState({ x: -100, y: -100 });
