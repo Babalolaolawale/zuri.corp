@@ -1,80 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function AsciiHeroBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', resize);
-    resize();
-
-    const chars = '.:-=+*#%@';
-    let mouse = { x: -1000, y: -1000 };
-
-    const onMouseMove = (e: MouseEvent) => {
-      mouse = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener('mousemove', onMouseMove);
-
-    let animationId: number;
-    const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(26, 26, 26, 0.25)'; // Balanced visibility text color
-      ctx.font = '14px monospace';
-      
-      const size = 20;
-      const cols = Math.floor(canvas.width / size);
-      const rows = Math.floor(canvas.height / size);
-
-      const time = Date.now() * 0.001;
-
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          const posX = x * size;
-          const posY = y * size;
-          
-          const dx = mouse.x - posX;
-          const dy = mouse.y - posY;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          
-          const noise = Math.sin(x * 0.1 + time) + Math.cos(y * 0.1 + time);
-          
-          let charIdx = 0;
-          if (dist < 150) {
-            charIdx = Math.floor((1 - dist / 150) * chars.length);
-          } else {
-            charIdx = Math.floor((noise + 2) / 4 * 3);
-          }
-          
-          charIdx = Math.max(0, Math.min(chars.length - 1, charIdx));
-          
-          ctx.fillText(chars[charIdx], posX, posY);
-        }
-      }
-
-      animationId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMouseMove);
-      cancelAnimationFrame(animationId);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="hidden md:block absolute inset-0 pointer-events-none opacity-60 z-0" />;
-}
-
 export function AsciiWave() {
   const [frame, setFrame] = useState(0);
 
@@ -83,8 +8,8 @@ export function AsciiWave() {
     return () => clearInterval(timer);
   }, []);
 
-  const rows = 14;
-  const cols = 40;
+  const rows = 40;
+  const cols = 140;
   let output = '';
   
   for (let y = 0; y < rows; y++) {
@@ -103,7 +28,7 @@ export function AsciiWave() {
     output += '\n';
   }
 
-  return <pre className="font-mono text-[10px] md:text-xs text-foreground/40 leading-none select-none overflow-hidden">{output}</pre>;
+  return <pre className="font-mono text-[6px] md:text-sm text-foreground/40 leading-none select-none overflow-hidden">{output}</pre>;
 }
 
 export function AsciiNetwork() {

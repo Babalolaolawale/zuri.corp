@@ -64,8 +64,10 @@ export default function LandingPage() {
 
             {/* Hero Section */}
             <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-20 overflow-hidden">
+                    <AsciiWave />
+                </div>
                 <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/80 to-white pointer-events-none z-0"></div>
-                <AsciiHeroBackground />
 
                 <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
@@ -114,9 +116,6 @@ export default function LandingPage() {
                                     every product we create starts with a question worth answering.
                                 </p>
                             </div>
-                            <div className="mt-12 hidden md:block pt-8 opacity-70">
-                                <AsciiWave />
-                            </div>
                         </div>
                         <div className="space-y-6 md:space-y-8 md:pt-16">
                             <ValueItem number="01" title="meaningful innovation" description="we build things that are beautiful, useful, and move the world forward." />
@@ -164,7 +163,7 @@ export default function LandingPage() {
                                     <span className="font-body text-sm text-muted lowercase">coming soon</span>
                                 </div>
                             </div>
-                            <div className="hidden md:flex flex-1 justify-end items-center opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                            <div className="flex mt-12 md:mt-0 flex-1 justify-center md:justify-end items-center opacity-70 group-hover:opacity-100 transition-opacity duration-700 w-full overflow-hidden">
                                 <AsciiNetwork />
                             </div>
                         </div>
