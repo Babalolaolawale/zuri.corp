@@ -45,16 +45,21 @@ export function DecryptText({ text, className = "" }: { text: string, className?
         
         let iteration = 0;
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+        
+        const targetMs = text.length < 15 ? 450 : 750;
+        const intervalMs = 30;
+        const increment = text.length / (targetMs / intervalMs);
+
         const interval = setInterval(() => {
             setDisplayText(
                 text.split("").map((letter, index) => {
-                    if (index < iteration || letter === " " || letter === "\\n") return text[index];
+                    if (index < iteration || letter === " " || letter === "\n") return text[index];
                     return chars[Math.floor(Math.random() * chars.length)];
                 }).join("")
             );
             if (iteration >= text.length) clearInterval(interval);
-            iteration += 1 / 3;
-        }, 30);
+            iteration += increment;
+        }, intervalMs);
         return () => clearInterval(interval);
     }, [isInView, text]);
 
