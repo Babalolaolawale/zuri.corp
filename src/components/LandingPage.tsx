@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import logo from "../assets/logo.png";
+import { AsciiHeroBackground, AsciiWave, AsciiNetwork, AsciiFooterEmblem } from "./ascii";
 
 export default function LandingPage() {
     const [isLoading, setIsLoading] = useState(() => {
@@ -63,8 +64,8 @@ export default function LandingPage() {
 
             {/* Hero Section */}
             <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
-                <div className="noise-overlay"></div>
-                <div className="absolute inset-0 bg-gradient-radial from-gray-50 via-white to-white opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/80 to-white pointer-events-none z-0"></div>
+                <AsciiHeroBackground />
 
                 <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
@@ -113,6 +114,9 @@ export default function LandingPage() {
                                     every product we create starts with a question worth answering.
                                 </p>
                             </div>
+                            <div className="mt-12 hidden md:block pt-8 opacity-70">
+                                <AsciiWave />
+                            </div>
                         </div>
                         <div className="space-y-6 md:space-y-8 md:pt-16">
                             <ValueItem number="01" title="meaningful innovation" description="we build things that are beautiful, useful, and move the world forward." />
@@ -134,19 +138,36 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Projects Section */}
+            {/* Current Focus Section */}
             <section id="projects" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-2 md:gap-4">
                         <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground lowercase">
-                            what we're building
+                            our singular focus
                         </h2>
-                        <p className="font-body text-xs md:text-sm text-muted lowercase">active projects</p>
+                        <p className="font-body text-xs md:text-sm text-muted lowercase">active venture</p>
                     </div>
-                    <div className="space-y-0">
-                        <ProjectCard name="pine" description="rethinking how founders connect, learn, and build together" tag="ecosystem" index="01" />
-                        <ProjectCard name="findr" description="discovering cities through local insight" tag="navigation" index="02" />
-                        <ProjectCard name="blink" description="invisible stablecoin settlement rails for global payouts" tag="fintech" index="03" />
+                    
+                    <div className="group border border-border p-8 md:p-12 lg:p-16 hover:bg-subtle transition-all">
+                        <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start md:items-center">
+                            <div className="flex-1">
+                                <span className="font-body text-xs text-muted uppercase tracking-widest mb-4 inline-block">fintech / infrastructure</span>
+                                <h3 className="font-heading text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 lowercase">blink</h3>
+                                <p className="font-body text-lg md:text-xl text-muted lowercase max-w-xl leading-relaxed mb-8">
+                                    invisible stablecoin settlement rails for global payouts. we are building the infrastructure that lets businesses move money across borders instantly, without the friction of traditional banking.
+                                </p>
+                                <div className="inline-flex items-center gap-3 border border-border px-6 py-3 bg-subtle/50 cursor-default">
+                                    <div className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-20"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground/80"></span>
+                                    </div>
+                                    <span className="font-body text-sm text-muted lowercase">coming soon</span>
+                                </div>
+                            </div>
+                            <div className="hidden md:flex flex-1 justify-end items-center opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                                <AsciiNetwork />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -155,7 +176,7 @@ export default function LandingPage() {
             <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 border-t border-border">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <StatItem number="3" label="active products" />
+                        <StatItem number="1" label="core product" />
                         <StatItem number="2022" label="founded" />
                         <StatItem number="∞" label="experiments ongoing" />
                         <StatItem number="1" label="mission" />
@@ -199,6 +220,8 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            <AsciiFooterEmblem />
 
             {/* Dramatic Wave Divider */}
             <div className="relative h-24 md:h-32 lg:h-40 bg-white overflow-hidden">
@@ -302,9 +325,9 @@ function Preloader() {
 /* Marquee Component */
 function Marquee() {
     const products = [
-        { name: "pine", icon: "◆" },
-        { name: "findr", icon: "●" },
         { name: "blink", icon: "◼" },
+        { name: "global payouts", icon: "◆" },
+        { name: "stablecoin settlement", icon: "●" },
     ];
     const items = [...products, ...products, ...products, ...products];
     return (
