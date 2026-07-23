@@ -62,186 +62,191 @@ export default function LandingPage() {
     return (
         <div className={`min-h-screen bg-white overflow-x-hidden transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
             <SmoothScrollProvider>
-            <CustomCursor />
-            <Header activeSection={activeSection} />
-            <ScrollDistort>
+                <CustomCursor />
+                <Header activeSection={activeSection} />
+                <ScrollDistort>
 
-            {/* Hero Section */}
-            <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-40 overflow-hidden">
-                    <AsciiWave />
-                </div>
-                <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/75 to-white pointer-events-none z-0"></div>
+                    {/* Hero Section */}
+                    <section id="home" className="min-h-[85vh] md:min-h-screen flex flex-col justify-center items-center pt-16 pb-8 md:pt-24 md:pb-16 px-5 md:px-12 lg:px-24 relative overflow-hidden">
+                        <div className="vignette-overlay"></div>
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-40 overflow-hidden">
+                            <AsciiWave />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-radial from-transparent via-white/80 to-white pointer-events-none z-0"></div>
 
-                <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
+                        <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
-                <div className={`max-w-5xl relative z-10 text-center md:text-left ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-                    <p className="font-body text-xs md:text-sm text-muted mb-4 md:mb-6 tracking-widest uppercase">company builder</p>
-                    <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-foreground mb-5 md:mb-8 leading-[1.05] lowercase">
-                        <DecryptText text={"building ideas\nthat matter"} />
-                    </h1>
-                    <p className="font-body text-base md:text-xl text-muted max-w-xl leading-relaxed lowercase mb-8 md:mb-10 mx-auto md:mx-0">
-                        we turn meaningful problems into products that last. no hype. no shortcuts. just work that means something.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center gap-4">
-                        <a href="#projects" className="inline-flex items-center gap-2 font-body text-sm text-white bg-foreground px-6 py-3 hover:bg-foreground/90 transition-all lowercase">
-                            see our work
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                        <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-2 font-body text-sm text-foreground border border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all lowercase">
-                            get in touch
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <Marquee />
-
-            {/* About Section */}
-            <section id="about" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-12 md:gap-24">
-                        <div>
-                            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-6 md:mb-8 lowercase">
-                                <DecryptText text="what we do" />
-                            </h2>
-                            <div className="space-y-4 md:space-y-6">
-                                <p className="font-body text-lg md:text-xl text-foreground leading-relaxed lowercase">
-                                    zuricorp is a company builder.
-                                </p>
-                                <p className="font-body text-sm md:text-lg text-muted leading-relaxed lowercase">
-                                    we explore real problems, design thoughtful solutions, and build products
-                                    with care. we believe the best companies are built slowly, with intention,
-                                    and with a deep understanding of the people they serve.
-                                </p>
-                                <p className="font-body text-sm md:text-lg text-muted leading-relaxed lowercase">
-                                    every product we create starts with a question worth answering.
-                                </p>
+                        <div className={`max-w-5xl relative z-10 text-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-1000`}>
+                            <div className="mb-6 flex justify-center">
+                                <span className="font-heading text-2xl text-foreground">✧</span>
                             </div>
+                            <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-medium text-foreground mb-6 md:mb-8 leading-[1.05] tracking-tight">
+                                <DecryptText text={"We believe that your next favorite product... isn't built yet."} />
+                            </h1>
+                            <p className="font-body text-sm md:text-base text-muted max-w-xl leading-relaxed mb-8 md:mb-10 mx-auto">
+                                zuri.corp is a company builder. we turn meaningful problems into products that last. no hype. no shortcuts.
+                            </p>
                         </div>
-                        <div className="space-y-6 md:space-y-8 md:pt-16">
-                            <ValueItem number="01" title="meaningful innovation" description="we build things that are beautiful, useful, and move the world forward." />
-                            <ValueItem number="02" title="independent leadership" description="each venture is led by the best minds, with the freedom to operate with clarity." />
-                            <ValueItem number="03" title="bold exploration" description="we go where we can make a real difference, bringing our philosophy to new spaces." />
-                            <ValueItem number="04" title="lasting impact" description="this isn't just business. it's about solving real problems that matter." />
+
+                        {/* Floating Widget */}
+                        <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-20 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                            <a href="#projects" className="group flex items-center gap-4 bg-[#111111] text-white/90 rounded-full py-2.5 px-4 hover:bg-black shadow-xl transition-all hover:scale-105 duration-300">
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+                                    <span className="text-xs">◼</span>
+                                </div>
+                                <span className="font-body text-xs pr-2 flex items-center gap-2">
+                                    Active Venture: Blink 
+                                    <span className="text-white/50 group-hover:text-white transition-colors">↗</span>
+                                </span>
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
 
-            {/* Quote Section */}
-            <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 bg-subtle">
-                <div className="max-w-4xl mx-auto text-center">
-                    <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground leading-relaxed italic lowercase">
-                        "we don't build for the sake of building. we build because some things need to exist."
-                    </blockquote>
-                    <p className="font-body text-xs md:text-sm text-muted mt-6 md:mt-8 lowercase">— zuricorp founding principle</p>
-                </div>
-            </section>
+                    <Marquee />
 
-            {/* Current Focus Section */}
-            <section id="projects" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
-                <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-2 md:gap-4">
-                        <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground lowercase">
-                            <DecryptText text="our singular focus" />
-                        </h2>
-                        <p className="font-body text-xs md:text-sm text-muted lowercase">active venture</p>
-                    </div>
-                    
-                    <div className="group border border-border p-8 md:p-12 lg:p-16 hover:bg-subtle transition-all">
-                        <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start md:items-center">
-                            <div className="flex-1">
-                                <span className="font-body text-xs text-muted uppercase tracking-widest mb-4 inline-block">fintech / infrastructure</span>
-                                <h3 className="font-heading text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 lowercase">blink</h3>
-                                <p className="font-body text-lg md:text-xl text-muted lowercase max-w-xl leading-relaxed mb-8">
-                                    invisible stablecoin settlement rails for global payouts. we are building the infrastructure that lets businesses move money across borders instantly, without the friction of traditional banking.
-                                </p>
-                                <div className="inline-flex items-center gap-3 border border-border px-6 py-3 bg-subtle/50 cursor-default">
-                                    <div className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-20"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground/80"></span>
+                    {/* About Section */}
+                    <section id="about" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+                                <div>
+                                    <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-6 md:mb-8 lowercase">
+                                        <DecryptText text="what we do" />
+                                    </h2>
+                                    <div className="space-y-4 md:space-y-6">
+                                        <p className="font-body text-lg md:text-xl text-foreground leading-relaxed lowercase">
+                                            zuricorp is a company builder.
+                                        </p>
+                                        <p className="font-body text-sm md:text-lg text-muted leading-relaxed lowercase">
+                                            we explore real problems, design thoughtful solutions, and build products
+                                            with care. we believe the best companies are built slowly, with intention,
+                                            and with a deep understanding of the people they serve.
+                                        </p>
+                                        <p className="font-body text-sm md:text-lg text-muted leading-relaxed lowercase">
+                                            every product we create starts with a question worth answering.
+                                        </p>
                                     </div>
-                                    <span className="font-body text-sm text-muted lowercase">coming soon</span>
+                                </div>
+                                <div className="space-y-6 md:space-y-8 md:pt-16">
+                                    <ValueItem number="01" title="meaningful innovation" description="we build things that are beautiful, useful, and move the world forward." />
+                                    <ValueItem number="02" title="independent leadership" description="each venture is led by the best minds, with the freedom to operate with clarity." />
+                                    <ValueItem number="03" title="bold exploration" description="we go where we can make a real difference, bringing our philosophy to new spaces." />
+                                    <ValueItem number="04" title="lasting impact" description="this isn't just business. it's about solving real problems that matter." />
                                 </div>
                             </div>
-                            <div className="flex mt-12 md:mt-0 flex-1 justify-center md:justify-end items-center opacity-70 group-hover:opacity-100 transition-opacity duration-700 w-full overflow-hidden">
-                                <AsciiNetwork />
+                        </div>
+                    </section>
+
+                    {/* Quote Section */}
+                    <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 bg-subtle">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground leading-relaxed italic lowercase">
+                                "we don't build for the sake of building. we build because some things need to exist."
+                            </blockquote>
+                            <p className="font-body text-xs md:text-sm text-muted mt-6 md:mt-8 lowercase">— zuricorp founding principle</p>
+                        </div>
+                    </section>
+
+                    {/* Current Focus Section */}
+                    <section id="projects" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-2 md:gap-4">
+                                <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground lowercase">
+                                    <DecryptText text="our singular focus" />
+                                </h2>
+                                <p className="font-body text-xs md:text-sm text-muted lowercase">active venture</p>
+                            </div>
+
+                            <div className="group border border-border p-8 md:p-12 lg:p-16 hover:bg-subtle transition-all">
+                                <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start md:items-center">
+                                    <div className="flex-1">
+                                        <span className="font-body text-xs text-muted uppercase tracking-widest mb-4 inline-block">fintech / infrastructure</span>
+                                        <h3 className="font-heading text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 lowercase">blink</h3>
+                                        <p className="font-body text-lg md:text-xl text-muted lowercase max-w-xl leading-relaxed mb-8">
+                                            invisible stablecoin settlement rails for global payouts. we are building the infrastructure that lets businesses move money across borders instantly, without the friction of traditional banking.
+                                        </p>
+                                        <div className="inline-flex items-center gap-3 border border-border px-6 py-3 bg-subtle/50 cursor-default">
+                                            <div className="relative flex h-2 w-2">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-20"></span>
+                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground/80"></span>
+                                            </div>
+                                            <span className="font-body text-sm text-muted lowercase">coming soon</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex mt-12 md:mt-0 flex-1 justify-center md:justify-end items-center opacity-70 group-hover:opacity-100 transition-opacity duration-700 w-full overflow-hidden">
+                                        <AsciiNetwork />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
 
-            {/* Stats Section */}
-            <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 border-t border-border">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <StatItem number="1" label="core product" />
-                        <StatItem number="2022" label="founded" />
-                        <StatItem number="∞" label="experiments ongoing" />
-                        <StatItem number="1" label="mission" />
-                    </div>
-                </div>
-            </section>
+                    {/* Stats Section */}
+                    <section className="py-16 md:py-24 px-5 md:px-12 lg:px-24 border-t border-border">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                <StatItem number="1" label="core product" />
+                                <StatItem number="2022" label="founded" />
+                                <StatItem number="∞" label="experiments ongoing" />
+                                <StatItem number="1" label="mission" />
+                            </div>
+                        </div>
+                    </section>
 
-            {/* Careers Section */}
-            <section id="careers" className="py-20 md:py-32 px-5 md:px-12 lg:px-24 bg-subtle">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-6 lowercase">
-                        <DecryptText text="work at zuri.corp" />
-                    </h2>
-                    <p className="font-body text-base md:text-lg text-muted lowercase mb-8">
-                        we're building something meaningful. come help.
-                    </p>
-                    <Link to="/careers" className="inline-flex items-center gap-2 font-body text-base text-foreground lowercase border border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all">
-                        view open roles
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    {/* Careers Section */}
+                    <section id="careers" className="py-20 md:py-32 px-5 md:px-12 lg:px-24 bg-subtle">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-foreground mb-6 lowercase">
+                                <DecryptText text="work at zuri.corp" />
+                            </h2>
+                            <p className="font-body text-base md:text-lg text-muted lowercase mb-8">
+                                we're building something meaningful. come help.
+                            </p>
+                            <Link to="/careers" className="inline-flex items-center gap-2 font-body text-base text-foreground lowercase border border-dashed border-foreground px-6 py-3 hover:bg-foreground hover:text-white transition-all">
+                                view open roles
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </Link>
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
+                        <div className="max-w-4xl mx-auto">
+                            <p className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground leading-relaxed italic lowercase mb-8 md:mb-12">
+                                <DecryptText text={"the work continues.\nquietly. intentionally."} />
+                            </p>
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 md:gap-16">
+                                <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-3 font-body text-base md:text-lg text-foreground hover:opacity-70 transition-opacity group lowercase">
+                                    <span>get in touch</span>
+                                    <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                                <span className="font-body text-xs md:text-sm text-muted lowercase">hello@zuricorp.com</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <AsciiFooterEmblem />
+
+                    {/* Dramatic Wave Divider */}
+                    <div className="relative h-24 md:h-32 lg:h-40 bg-white overflow-hidden">
+                        <svg
+                            viewBox="0 0 1200 120"
+                            preserveAspectRatio="none"
+                            className="absolute bottom-0 w-full h-full"
+                        >
+                            <path
+                                d="M0,0 C150,80 350,80 500,30 C650,-20 800,50 900,70 C1000,90 1100,60 1200,40 L1200,120 L0,120 Z"
+                                fill="#1a1a1a"
+                                className=""
+                            />
                         </svg>
-                    </Link>
-                </div>
-            </section>
-
-            {/* Contact Section */}
-            <section id="contact" className="py-20 md:py-32 px-5 md:px-12 lg:px-24">
-                <div className="max-w-4xl mx-auto">
-                    <p className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-foreground leading-relaxed italic lowercase mb-8 md:mb-12">
-                        <DecryptText text={"the work continues.\nquietly. intentionally."} />
-                    </p>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 md:gap-16">
-                        <a href="mailto:hello@zuricorp.com" className="inline-flex items-center gap-3 font-body text-base md:text-lg text-foreground hover:opacity-70 transition-opacity group lowercase">
-                            <span>get in touch</span>
-                            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a>
-                        <span className="font-body text-xs md:text-sm text-muted lowercase">hello@zuricorp.com</span>
                     </div>
-                </div>
-            </section>
 
-            <AsciiFooterEmblem />
-
-            {/* Dramatic Wave Divider */}
-            <div className="relative h-24 md:h-32 lg:h-40 bg-white overflow-hidden">
-                <svg
-                    viewBox="0 0 1200 120"
-                    preserveAspectRatio="none"
-                    className="absolute bottom-0 w-full h-full"
-                >
-                    <path
-                        d="M0,0 C150,80 350,80 500,30 C650,-20 800,50 900,70 C1000,90 1100,60 1200,40 L1200,120 L0,120 Z"
-                        fill="#1a1a1a"
-                        className=""
-                    />
-                </svg>
-            </div>
-
-            <Footer />
-            </ScrollDistort>
+                    <Footer />
+                </ScrollDistort>
             </SmoothScrollProvider>
         </div>
     );
@@ -413,37 +418,38 @@ function Header({ activeSection }: { activeSection: string }) {
     };
 
     const navItems = [
-        { id: "home", label: "home" },
-        { id: "about", label: "about" },
-        { id: "projects", label: "products" },
+        { id: "home", label: "Zuri" },
+        { id: "projects", label: "Products" },
+        { id: "about", label: "About" },
     ];
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-sm border-b border-border" : "bg-transparent"}`}>
-                <nav className="max-w-7xl mx-auto px-5 md:px-12 lg:px-24 py-4 md:py-5">
-                    <div className="flex items-center justify-between">
-                        <button onClick={() => scrollToSection("home")} className="font-heading text-base md:text-xl font-medium text-foreground lowercase hover:opacity-70 transition-opacity">
-                            zuri.corp
-                        </button>
-                        <div className="hidden md:flex items-center space-x-10">
-                            {navItems.map((item) => (
-                                <button key={item.id} onClick={() => scrollToSection(item.id)} className={`font-body text-sm lowercase transition-all relative ${activeSection === item.id ? "text-foreground" : "text-muted hover:text-foreground"}`}>
-                                    {item.label}
-                                    {activeSection === item.id && <span className="absolute -bottom-1 left-0 right-0 h-px bg-foreground"></span>}
-                                </button>
-                            ))}
-                            <Link to="/careers" className="font-body text-sm text-muted hover:text-foreground lowercase transition-all">
-                                careers
-                            </Link>
-                        </div>
-                        <a href="mailto:hello@zuricorp.com" className="hidden md:block font-body text-sm text-foreground lowercase border border-foreground px-5 py-2.5 hover:bg-foreground hover:text-white transition-all">
-                            contact
-                        </a>
-                        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-body text-sm text-foreground lowercase p-2">
-                            {mobileMenuOpen ? "close" : "menu"}
-                        </button>
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "py-4" : "py-6"}`}>
+                <nav className="max-w-[90rem] mx-auto px-6 md:px-12 flex items-center justify-between">
+                    {/* Left Spacer for centering */}
+                    <div className="w-48 hidden md:block"></div>
+
+                    {/* Centered Nav */}
+                    <div className="hidden md:flex items-center space-x-8 bg-white/60 backdrop-blur-md px-8 py-3 rounded-full border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                        {navItems.map((item) => (
+                            <button key={item.id} onClick={() => scrollToSection(item.id)} className={`font-heading text-[16px] transition-all relative ${activeSection === item.id ? "text-foreground" : "text-muted hover:text-foreground"}`}>
+                                {item.label}
+                            </button>
+                        ))}
+                        <Link to="/careers" className="font-heading text-[16px] text-muted hover:text-foreground transition-all">
+                            Careers
+                        </Link>
                     </div>
+
+                    {/* Right side: Clock */}
+                    <div className="w-48 flex justify-end">
+                        <AnalogClock />
+                    </div>
+
+                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-heading text-sm text-foreground p-2">
+                        {mobileMenuOpen ? "Close" : "Menu"}
+                    </button>
                 </nav>
             </header>
 
@@ -451,16 +457,13 @@ function Header({ activeSection }: { activeSection: string }) {
                 <div className="fixed inset-0 z-40 bg-white md:hidden">
                     <div className="flex flex-col items-center justify-center h-full space-y-8">
                         {navItems.map((item) => (
-                            <button key={item.id} onClick={() => scrollToSection(item.id)} className={`font-heading text-3xl lowercase ${activeSection === item.id ? "text-foreground" : "text-muted"}`}>
+                            <button key={item.id} onClick={() => scrollToSection(item.id)} className={`font-heading text-3xl ${activeSection === item.id ? "text-foreground" : "text-muted"}`}>
                                 {item.label}
                             </button>
                         ))}
-                        <Link to="/careers" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl text-muted lowercase">
-                            careers
+                        <Link to="/careers" onClick={() => setMobileMenuOpen(false)} className="font-heading text-3xl text-muted">
+                            Careers
                         </Link>
-                        <a href="mailto:hello@zuricorp.com" className="font-body text-lg text-foreground lowercase border border-foreground px-8 py-3 mt-8">
-                            contact
-                        </a>
                     </div>
                 </div>
             )}
@@ -506,6 +509,55 @@ function WaveDivider({ className = "" }: { className?: string }) {
                     className="text-gray-100"
                 />
             </svg>
+        </div>
+    );
+}
+
+/* Analog Clock Component */
+function AnalogClock() {
+    const [time, setTime] = useState(new Date());
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        const timer = setInterval(() => setTime(new Date()), 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    if (!mounted) return null;
+
+    const hours = time.getHours() % 12;
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+
+    const hourDeg = (hours * 30) + (minutes * 0.5);
+    const minuteDeg = (minutes * 6) + (seconds * 0.1);
+    const secondDeg = seconds * 6;
+
+    return (
+        <div className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity">
+            <span className="font-heading text-sm text-foreground hidden sm:block">
+                {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </span>
+            <div className="relative w-[18px] h-[18px] rounded-full border border-foreground/30 bg-transparent flex items-center justify-center">
+                {/* Hour hand */}
+                <div 
+                    className="absolute w-[1.5px] bg-foreground origin-bottom rounded-full" 
+                    style={{ height: '4px', transform: `rotate(${hourDeg}deg) translateY(-100%)`, bottom: '50%' }}
+                />
+                {/* Minute hand */}
+                <div 
+                    className="absolute w-[1px] bg-foreground origin-bottom rounded-full" 
+                    style={{ height: '6px', transform: `rotate(${minuteDeg}deg) translateY(-100%)`, bottom: '50%' }}
+                />
+                {/* Second hand */}
+                <div 
+                    className="absolute w-[0.5px] bg-red-500 origin-bottom rounded-full" 
+                    style={{ height: '6px', transform: `rotate(${secondDeg}deg) translateY(-100%)`, bottom: '50%' }}
+                />
+                {/* Center dot */}
+                <div className="absolute w-[2px] h-[2px] bg-foreground rounded-full" />
+            </div>
         </div>
     );
 }
