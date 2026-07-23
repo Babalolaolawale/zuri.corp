@@ -77,9 +77,6 @@ export default function LandingPage() {
                         <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-muted/20 rounded-full hidden md:block"></div>
 
                         <div className={`max-w-5xl relative z-10 text-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-1000`}>
-                            <div className="mb-6 flex justify-center">
-                                <span className="font-heading text-2xl text-foreground">✧</span>
-                            </div>
                             <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-medium text-foreground mb-6 md:mb-8 leading-[1.05] tracking-tight">
                                 <DecryptText text={"We believe that your next favorite product... isn't built yet."} />
                             </h1>
@@ -427,8 +424,12 @@ function Header({ activeSection }: { activeSection: string }) {
         <>
             <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "py-4" : "py-6"}`}>
                 <nav className="max-w-[90rem] mx-auto px-6 md:px-12 flex items-center justify-between">
-                    {/* Left Spacer for centering */}
-                    <div className="w-48 hidden md:block"></div>
+                    {/* Left: Mobile Logo / Desktop Spacer */}
+                    <div className="w-auto md:w-48 flex justify-start">
+                        <button onClick={() => scrollToSection("home")} className="md:hidden font-heading text-xl font-medium text-foreground hover:opacity-70 transition-opacity">
+                            zuri.corp
+                        </button>
+                    </div>
 
                     {/* Centered Nav */}
                     <div className="hidden md:flex items-center space-x-8 bg-white/60 backdrop-blur-md px-8 py-3 rounded-full border border-black/5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
@@ -442,14 +443,15 @@ function Header({ activeSection }: { activeSection: string }) {
                         </Link>
                     </div>
 
-                    {/* Right side: Clock */}
-                    <div className="w-48 flex justify-end">
-                        <AnalogClock />
+                    {/* Right side: Clock & Mobile Menu */}
+                    <div className="w-auto md:w-48 flex justify-end items-center gap-4">
+                        <div className="flex items-center justify-center">
+                            <AnalogClock />
+                        </div>
+                        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-heading text-sm text-foreground py-2 px-1">
+                            {mobileMenuOpen ? "Close" : "Menu"}
+                        </button>
                     </div>
-
-                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden font-heading text-sm text-foreground p-2">
-                        {mobileMenuOpen ? "Close" : "Menu"}
-                    </button>
                 </nav>
             </header>
 
@@ -539,24 +541,24 @@ function AnalogClock() {
             <span className="font-heading text-sm text-muted bg-transparent px-2 py-0.5 rounded-md group-hover:bg-foreground group-hover:text-white transition-all duration-300 hidden sm:block">
                 {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </span>
-            <div className="relative w-[20px] h-[20px] rounded-full border border-foreground/30 bg-transparent flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+            <div className="relative w-[24px] h-[24px] rounded-full border border-foreground/30 bg-transparent flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
                 {/* Hour hand */}
                 <div 
-                    className="absolute w-[1.5px] bg-foreground rounded-full origin-bottom" 
-                    style={{ height: '5px', bottom: '50%', left: 'calc(50% - 0.75px)', transform: `rotate(${hourDeg}deg)` }}
+                    className="absolute w-[2px] bg-foreground rounded-full origin-bottom" 
+                    style={{ height: '6px', bottom: '50%', left: 'calc(50% - 1px)', transform: `rotate(${hourDeg}deg)` }}
                 />
                 {/* Minute hand */}
                 <div 
-                    className="absolute w-[1px] bg-foreground rounded-full origin-bottom" 
-                    style={{ height: '7px', bottom: '50%', left: 'calc(50% - 0.5px)', transform: `rotate(${minuteDeg}deg)` }}
+                    className="absolute w-[1.5px] bg-foreground rounded-full origin-bottom" 
+                    style={{ height: '9px', bottom: '50%', left: 'calc(50% - 0.75px)', transform: `rotate(${minuteDeg}deg)` }}
                 />
                 {/* Second hand */}
                 <div 
-                    className="absolute w-[0.5px] bg-red-500 rounded-full origin-bottom" 
-                    style={{ height: '8px', bottom: '50%', left: 'calc(50% - 0.25px)', transform: `rotate(${secondDeg}deg)` }}
+                    className="absolute w-[1px] bg-red-500 rounded-full origin-bottom" 
+                    style={{ height: '11px', bottom: '50%', left: 'calc(50% - 0.5px)', transform: `rotate(${secondDeg}deg)` }}
                 />
                 {/* Center dot */}
-                <div className="absolute w-[3px] h-[3px] bg-foreground rounded-full z-10" />
+                <div className="absolute w-[4px] h-[4px] bg-foreground rounded-full z-10" />
             </div>
         </div>
     );
