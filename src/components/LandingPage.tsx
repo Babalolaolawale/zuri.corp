@@ -78,7 +78,7 @@ export default function LandingPage() {
 
                         <div className={`max-w-5xl relative z-10 text-center ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-1000`}>
                             <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-medium text-foreground mb-6 md:mb-8 leading-[1.05] tracking-tight">
-                                <DecryptText text={"We believe that your next favorite product... isn't built yet."} />
+                                <DecryptText text={"we believe that your next favorite product... isn't built yet."} />
                             </h1>
                             <p className="font-body text-sm md:text-base text-muted max-w-xl leading-relaxed mb-8 md:mb-10 mx-auto">
                                 zuri.corp is a company builder. we turn meaningful problems into products that last. no hype. no shortcuts.
@@ -87,13 +87,9 @@ export default function LandingPage() {
 
                         {/* Floating Widget */}
                         <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-20 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                            <a href="#projects" className="group flex items-center gap-4 bg-[#111111] text-white/90 rounded-full py-2.5 px-4 hover:bg-black shadow-xl transition-all hover:scale-105 duration-300">
-                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
-                                    <span className="text-xs">◼</span>
-                                </div>
-                                <span className="font-body text-xs pr-2 flex items-center gap-2">
-                                    Active Venture: Blink 
-                                    <span className="text-white/50 group-hover:text-white transition-colors">↗</span>
+                            <a href="#projects" className="block bg-[#111111] text-white/90 rounded-full py-2.5 px-6 md:px-8 hover:bg-black shadow-xl transition-all hover:scale-105 duration-300 whitespace-nowrap">
+                                <span className="font-body text-xs md:text-sm tracking-wide lowercase">
+                                    active venture: blink
                                 </span>
                             </a>
                         </div>
