@@ -418,7 +418,7 @@ function Header({ activeSection }: { activeSection: string }) {
     };
 
     const navItems = [
-        { id: "home", label: "Zuri" },
+        { id: "home", label: "zuri.corp" },
         { id: "projects", label: "Products" },
         { id: "about", label: "About" },
     ];
@@ -535,28 +535,28 @@ function AnalogClock() {
     const secondDeg = seconds * 6;
 
     return (
-        <div className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity">
-            <span className="font-heading text-sm text-foreground hidden sm:block">
+        <div className="group flex items-center gap-3 cursor-default">
+            <span className="font-heading text-sm text-muted bg-transparent px-2 py-0.5 rounded-md group-hover:bg-foreground group-hover:text-white transition-all duration-300 hidden sm:block">
                 {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </span>
-            <div className="relative w-[18px] h-[18px] rounded-full border border-foreground/30 bg-transparent flex items-center justify-center">
+            <div className="relative w-[20px] h-[20px] rounded-full border border-foreground/30 bg-transparent flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
                 {/* Hour hand */}
                 <div 
-                    className="absolute w-[1.5px] bg-foreground origin-bottom rounded-full" 
-                    style={{ height: '4px', transform: `rotate(${hourDeg}deg) translateY(-100%)`, bottom: '50%' }}
+                    className="absolute w-[1.5px] bg-foreground rounded-full origin-bottom" 
+                    style={{ height: '5px', bottom: '50%', left: 'calc(50% - 0.75px)', transform: `rotate(${hourDeg}deg)` }}
                 />
                 {/* Minute hand */}
                 <div 
-                    className="absolute w-[1px] bg-foreground origin-bottom rounded-full" 
-                    style={{ height: '6px', transform: `rotate(${minuteDeg}deg) translateY(-100%)`, bottom: '50%' }}
+                    className="absolute w-[1px] bg-foreground rounded-full origin-bottom" 
+                    style={{ height: '7px', bottom: '50%', left: 'calc(50% - 0.5px)', transform: `rotate(${minuteDeg}deg)` }}
                 />
                 {/* Second hand */}
                 <div 
-                    className="absolute w-[0.5px] bg-red-500 origin-bottom rounded-full" 
-                    style={{ height: '6px', transform: `rotate(${secondDeg}deg) translateY(-100%)`, bottom: '50%' }}
+                    className="absolute w-[0.5px] bg-red-500 rounded-full origin-bottom" 
+                    style={{ height: '8px', bottom: '50%', left: 'calc(50% - 0.25px)', transform: `rotate(${secondDeg}deg)` }}
                 />
                 {/* Center dot */}
-                <div className="absolute w-[2px] h-[2px] bg-foreground rounded-full" />
+                <div className="absolute w-[3px] h-[3px] bg-foreground rounded-full z-10" />
             </div>
         </div>
     );
